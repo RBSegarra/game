@@ -30,7 +30,7 @@ void Player::setShape(char model)
 {
 	piece = model;
 }
-void play(int x, char y, char tic[][3], Player player)
+void play(int x, char y, char tic[][3], Player& player)
 {
 	
 	switch (y) {
@@ -132,23 +132,24 @@ int main()
 	do
 	{
 		cout << p1 << " make a move" << endl;
+
 		cin >> y >> x;
+
 		play(x, y, tic, player1);
-		cout << player1.winStat();
+		display(tic);
 		if (player1.winStat()) { 
 			cout << player1.name << " Has Won!";
 			exit(0);
 		}
-		display(tic);
 		cout << p2 << " make a move" << endl;
 		cin >> y >> x;
 		play(x, y, tic, player2);
-		cout << player2.winStat();
+		display(tic);
 		if (player2.winStat()) { 
 			cout << player2.name << " Has Won!";
 				exit(0);
 		}
-		display(tic);
+		
 		
 
 	} while (!player1.winStat() || !player2.winStat());
